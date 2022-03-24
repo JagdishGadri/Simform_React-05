@@ -8,8 +8,8 @@ function UserItem(props) {
   const dispatch=useDispatch()
 
   return (
-    <div className="user-item"  onMouseEnter={() => dispatch(onMouseHover(props.userId))} >
-      <div className="user-data" >
+    <div className="user-item"   >
+      <div className="user-data" onMouseEnter={() => dispatch(onMouseHover(props.userId))}>
         <img
           className="user-img"
           src={props.userPicture}
@@ -18,8 +18,7 @@ function UserItem(props) {
         />
         <div className="user-name-email">
           <div className="user-name">
-            <h5>{props.userFirstName}</h5>
-            <h5>{props.userLastName}</h5>
+            <h5>{props.userFirstName + " " + props.userLastName}</h5>
           </div>
           <div className="user-email">
             <h6>{props.userEmail}</h6>

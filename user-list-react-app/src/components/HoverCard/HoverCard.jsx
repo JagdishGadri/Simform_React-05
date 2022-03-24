@@ -1,6 +1,7 @@
 import React from "react";
 import "./HoverCard.css";
-import image from '../../assets/Active.jpg'
+import activeImage from '../../assets/Active.jpg'
+import noUserImage from '../../assets/NoUser.jpeg'
 import { useSelector } from "react-redux";
 
 function Card() {
@@ -8,14 +9,14 @@ function Card() {
   const UserData=useSelector((state)=>(state.data))
   const HoveredID=useSelector((state)=>(state.initialId))
   const User = UserData ? UserData.find((user)=>user.id===HoveredID) : []
-  console.log(UserData)
-  console.log(HoveredID)
-  console.log(User)
-
     if(typeof HoveredID !== "number"){
       return (
         <div className="hover-card">
-          <p>This Is My Bros Support</p>
+          <img src={noUserImage} alt="" />
+          <div className="no-user-text">
+           <strong>Nothing To Show !</strong>
+           <strong>Please hover over the user to see more details of user.</strong>
+          </div>
         </div>
       )
     }
@@ -26,32 +27,27 @@ function Card() {
         
           <h3 >
             { User.first_name} { User.last_name}
-           {User.id===1 &&  <img style={{height:10, width:15 ,marginBottom:7 }} src={image} alt="img" />}
+           {User.id===1 &&  <img style={{height:10, width:15 ,marginBottom:7 }} src={activeImage} alt="img" />}
           </h3>
          
           <p style={{ opacity: 0.6 }}>{ User.email}</p>
           <h3>Your Plan: Standard</h3>
           <button className="card-active-button">Active User</button>
+          <div className="user-meter">
           <p>Plan Uses</p>
-          <meter id="disk_c" value="5" min="0" max="10" />
+          <meter id="disk_c" value="6" min="0" max="10" />
+          </div>
+         
           <div className="click-detail">
             <div>
-              <h3>2450</h3>
-              <p>clicks reviewed</p>
+              <h3>2,450</h3>
+              <p style={{fontSize:12,opacity:0.8}}>Clicks reviewed</p>
             </div>
-            <div
-              style={{
-                width: "2px",
-                height: 45,
-                opacity: 0.6,
-                backgroundColor: "black",
-                marginLeft:10,
-                marginRight:10,
-              }}
+            <div className="click-bar"
             ></div>
             <div>
-              <h3>5000</h3>
-              <p>Monthly Clicks</p>
+              <h3>5,000</h3>
+              <p style={{fontSize:12,opacity:0.8}}>Monthly Clicks</p>
             </div>
           </div>
         </div>

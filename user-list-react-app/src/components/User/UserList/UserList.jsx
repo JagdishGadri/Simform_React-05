@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import "./UserList.css"
 
 function UserList({userData}) {
-  // const user_data =userData;
-  // console.log(props.userData)
   return (
     <div className="user-list">
       <div className="list-title">
